@@ -8,7 +8,14 @@ function registrationCategory() {
   return (
     <PageDefault>
       <h1>Category Registration</h1>
-      <Link to="/registration/category">Register Category</Link>
+
+      <form>
+        <label>
+          Category Name:
+          <input type="text" />
+        </label>
+        <button>Register</button>
+      </form>
     </PageDefault>
   );
 }

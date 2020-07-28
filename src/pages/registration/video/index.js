@@ -8,6 +8,7 @@ function registrationVideo() {
   return (
     <PageDefault>
       <h1>Video Registration</h1>
+      <Link to="/registration/category">Register Category</Link>
     </PageDefault>
   );
 }
