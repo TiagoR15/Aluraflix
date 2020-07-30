@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
@@ -24,6 +24,26 @@ function RegistrationCategory() {
   function handleChange(e) {
     setValue(e.target.getAttribute('name'), e.target.value);
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setCategories([
+        ...categories,
+        {
+          "id": 1,
+          "name": "Front End",
+          "description": "Category",
+          "color": "#cbd1ff"
+        },
+        {
+          "id": 1,
+          "name": "Back End",
+          "description": "Other Category",
+          "color": "#cbd1ff"
+        }
+      ]);
+    }, 4 * 1000)
+  }, [])
 
   return (
     <PageDefault>
@@ -65,6 +85,12 @@ function RegistrationCategory() {
 
         <Button>Registration</Button>
       </form>
+
+      {categories.length === 0 && (
+        <div>
+          Loading...
+        </div>
+      )}
 
       <ul>
         {categories.map((category, index) => <li key={`${category.name}${index}`}>{category.name}</li>)}
