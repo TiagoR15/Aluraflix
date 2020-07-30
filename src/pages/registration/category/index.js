@@ -26,23 +26,12 @@ function RegistrationCategory() {
   }
 
   useEffect(() => {
-    setTimeout(() => {
-      setCategories([
-        ...categories,
-        {
-          "id": 1,
-          "name": "Front End",
-          "description": "Category",
-          "color": "#cbd1ff"
-        },
-        {
-          "id": 1,
-          "name": "Back End",
-          "description": "Other Category",
-          "color": "#cbd1ff"
-        }
-      ]);
-    }, 4 * 1000)
+    const URL = "http://localhost:8080/categorias"
+    fetch(URL)
+      .then(async (serverResponse) => {
+        const response = await serverResponse.json();
+        setCategories(response)
+      });
   }, [])
 
   return (
