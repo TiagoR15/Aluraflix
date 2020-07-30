@@ -1,15 +1,16 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import PageDefault from "../../../components/PageDefault";
-import FormField from "../../../components/FormField";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import PageDefault from '../../../components/PageDefault';
+import FormField from '../../../components/FormField';
+import Button from '../../../components/Button';
 
 function RegistrationCategory() {
-  const [categories, setCategories] = useState(["Teste"]);
+  const [categories, setCategories] = useState(['Teste']);
 
   const initialValues = {
-    name: "",
-    description: "",
-    color: "",
+    name: '',
+    description: '',
+    color: '',
   };
   const [values, setValues] = useState(initialValues);
 
@@ -21,12 +22,16 @@ function RegistrationCategory() {
   }
 
   function handleChange(e) {
-    setValue(e.target.getAttribute("name"), e.target.value);
+    setValue(e.target.getAttribute('name'), e.target.value);
   }
 
   return (
     <PageDefault>
-      <h1>Registration Category: {values.name}</h1>
+      <h1>
+        Registration Category:
+        {' '}
+        {values.name}
+      </h1>
       <form
         onSubmit={function handleSubmit(e) {
           e.preventDefault();
@@ -58,13 +63,11 @@ function RegistrationCategory() {
           onChange={handleChange}
         />
 
-        <button>Registration</button>
+        <Button>Registration</Button>
       </form>
 
       <ul>
-        {categories.map((category, index) => {
-          return <li key={`${category}${index}`}>{category.name}</li>;
-        })}
+        {categories.map((category, index) => <li key={`${category}${index}`}>{category.name}</li>)}
       </ul>
 
       <Link to="/">Go to home</Link>
