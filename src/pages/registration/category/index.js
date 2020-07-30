@@ -5,7 +5,7 @@ import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
 
 function RegistrationCategory() {
-  const [categories, setCategories] = useState(['Teste']);
+  const [categories, setCategories] = useState([]);
 
   const initialValues = {
     name: '',
@@ -67,7 +67,7 @@ function RegistrationCategory() {
       </form>
 
       <ul>
-        {categories.map((category, index) => <li key={`${category}${index}`}>{category.name}</li>)}
+        {categories.map((category, index) => <li key={`${category.name}${index}`}>{category.name}</li>)}
       </ul>
 
       <Link to="/">Go to home</Link>
