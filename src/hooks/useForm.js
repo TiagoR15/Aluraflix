@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState } from 'react'
 
-function useForm(initialValues) {
-  const [values, setValues] = useState(initialValues);
+function useForm(startValues) {
+  const [values, setValues] = useState(startValues);
 
   function setValue(key, value) {
     setValues({
@@ -10,20 +10,18 @@ function useForm(initialValues) {
     });
   }
 
-  function handleChange(e) {
-    setValue(e.target.getAttribute('name'), e.target.value);
+  function handleChange(event) {
+    setValue(event.target.getAttribute('name'), event.target.value);
   }
 
   function clearForm() {
-    setValues(initialValues);
+    setValues(startValues)
   }
 
   return {
     values,
-    handleChange,
-    clearForm
+    handleChange, clearForm
   }
-
 }
 
-export default useForm;
+export default useForm
