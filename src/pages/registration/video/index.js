@@ -10,6 +10,7 @@ import categoriesRepository from '../../../repositories/categories'
 function RegistrationVideo() {
   const history = useHistory()
   const [categories, setCategories] = useState([])
+  const categoryTitles = categories.map(({ titulo }) => titulo)
   const { values, handleChange } = useForm({})
 
   useEffect(() => {
@@ -17,8 +18,6 @@ function RegistrationVideo() {
       setCategories(response);
     });
   }, [])
-
-  console.log(categories);
 
   return (
     <PageDefault >
@@ -31,16 +30,19 @@ function RegistrationVideo() {
           return categorie.titulo === values.categoria;
         });
 
-        console.log(categoryId);
-
-        createVideo.create({
-          titulo: values.titulo,
-          url: values.url,
-          categoriaId: categoryId.id
-        }).then(() => {
-          console.log('Success');
-          history.push('/');
-        })
+        if (categoryId === undefined) {
+          alert("Category not registered. Please register the category");
+          history.push("/");
+        } else {
+          createVideo.create({
+            titulo: values.titulo,
+            url: values.url,
+            categoriaId: categoryId.id
+          }).then(() => {
+            console.log('Success');
+            history.push('/');
+          })
+        }
       }}>
 
         <FormField
@@ -65,6 +67,7 @@ function RegistrationVideo() {
           name="categoria"
           value={values.categoria}
           onChange={handleChange}
+          suggestions={categoryTitles}
         />
 
         <Button type="submit">Register</Button>
