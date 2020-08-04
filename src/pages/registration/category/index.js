@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm'
 
 function RegistrationCategory() {
   const [categories, setCategories] = useState([]);
@@ -12,18 +13,8 @@ function RegistrationCategory() {
     description: '',
     color: '',
   };
-  const [values, setValues] = useState(initialValues);
 
-  function setValue(key, value) {
-    setValues({
-      ...values,
-      [key]: value,
-    });
-  }
-
-  function handleChange(e) {
-    setValue(e.target.getAttribute('name'), e.target.value);
-  }
+  const { handleChange, values, clearForm } = useForm(initialValues);
 
   useEffect(() => {
     const URL = window.location.hostname.includes("localhost")
@@ -48,7 +39,7 @@ function RegistrationCategory() {
         onSubmit={function handleSubmit(e) {
           e.preventDefault();
           setCategories([...categories, values]);
-          setValues(initialValues);
+          clearForm();
         }}
       >
         <FormField
@@ -85,7 +76,7 @@ function RegistrationCategory() {
       )}
 
       <ul>
-        {categories.map((category, index) => <li key={`${category.name}${index}`}>{category.name}</li>)}
+        {categories.map((category, index) => <li key={`${category.name}${index}`}>{category.titulo}</li>)}
       </ul>
 
       <Link to="/">Go to home</Link>
