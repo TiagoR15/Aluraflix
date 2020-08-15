@@ -6,6 +6,7 @@ import Button from '../../../components/Button';
 import useForm from '../../../hooks/useForm'
 
 import './styles.css'
+import Loading from '../../../components/Loading';
 
 function RegistrationCategory() {
   const [categories, setCategories] = useState([]);
@@ -31,7 +32,6 @@ function RegistrationCategory() {
 
   }, [])
 
-  console.log(categories)
 
   return (
     <PageDefault>
@@ -75,9 +75,7 @@ function RegistrationCategory() {
       </form>
 
       {categories.length === 0 && (
-        <div>
-          Loading...
-        </div>
+        <Loading />
       )}
 
       <table className="table">

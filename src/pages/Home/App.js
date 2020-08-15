@@ -4,6 +4,7 @@ import Carousel from "../../components/Carousel";
 import categoriesRepository from '../../repositories/categories'
 import PageDefault from "../../components/PageDefault"
 import "./App.css";
+import Loading from "../../components/Loading";
 
 function Home() {
   const [dadosIniciais, setDadosIniciais] = useState([]);
@@ -11,7 +12,7 @@ function Home() {
   useEffect(() => {
     categoriesRepository.getAllWithVideos()
       .then((res) => {
-        setDadosIniciais(res);
+        //setDadosIniciais(res);
       })
       .catch((err) => {
         console.log(err.message);
@@ -21,7 +22,8 @@ function Home() {
   return (
     <PageDefault paddingAll={0}>
 
-      {dadosIniciais.length === 0 && (<div>Loading ...</div>)}
+      {dadosIniciais.length === 0 && (
+        <Loading />)}
 
       {dadosIniciais.map((categoria, indice) => {
         if (indice === 0) {
