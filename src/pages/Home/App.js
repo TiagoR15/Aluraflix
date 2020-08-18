@@ -12,7 +12,7 @@ function Home() {
   useEffect(() => {
     categoriesRepository.getAllWithVideos()
       .then((res) => {
-        //setDadosIniciais(res);
+        setDadosIniciais(res);
       })
       .catch((err) => {
         console.log(err.message);

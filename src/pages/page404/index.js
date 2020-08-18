@@ -11,7 +11,7 @@ function Page404() {
       <h2>We can't find the page you are looking for</h2>
     </div>
     <div className="sad-smile">
-      <h1>:(</h1>
+      <h1 className="smile">:(</h1>
     </div>
   </div>;
 }

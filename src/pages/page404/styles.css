@@ -44,7 +44,7 @@
     30px 1px 60px rgba(16,16,16,0.4);
 }
 
-h1 {
+.smile {
   transform: rotate(90deg);
   font-size: 50px;
 }
